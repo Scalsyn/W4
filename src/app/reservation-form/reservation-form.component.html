@@ -1,0 +1,57 @@
+<app-home></app-home>
+
+<h3 class="mt-5 mb-3">Új foglalás</h3>
+
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label">Foglalás kezdete</label>
+            <input class="form-control" type="date" formControlName="from">
+            <small class="text-danger" *ngIf="reservationForm.get('from')?.invalid && reservationForm.get('from')?.touched">
+                Mező kitöltése kötelező.
+            </small>
+        </div>
+        <div class="col">
+            <label class="form-label">Foglalás vége</label>
+            <input class="form-control" type="date" formControlName="to">
+            <small class="text-danger" *ngIf="reservationForm.get('to')?.invalid && reservationForm.get('to')?.touched">
+                Mező kitöltése kötelező.
+            </small>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label">Foglaló neve</label>
+            <input class="form-control" type="text" formControlName="name">
+            <small class="text-danger" *ngIf="reservationForm.get('name')?.invalid && reservationForm.get('name')?.touched">
+                Mező kitöltése kötelező.
+            </small>
+        </div>
+        <div class="col">
+            <label class="form-label">E-mail</label>
+            <input class="form-control" type="email" formControlName="email">
+            <small class="text-danger" *ngIf="reservationForm.get('email')?.invalid && reservationForm.get('email')?.touched">
+                Mező kitöltése kötelező.
+            </small>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <label class="form-label">Jármű</label>
+            <select class="form-control" formControlName="car">
+                <option value="" selected disabled>--Válasszon--</option>
+                <option value="Toyota Corolla">Toyota Corolla</option>
+                <option value="Toyota RAV4">Toyota RAV4</option>
+                <option value="Honda CR-V">Honda CR-V</option>
+                <option value="Chevrolet Silverado">Chevrolet Silverado</option>
+                <option value="Hyundai Tucson">Hyundai Tucson</option>
+                <option value="Toyota Hilux">Toyota Hilux</option>
+                <option value="Ram Pick-up">Ram Pick-up</option>
+              </select>
+            <small class="text-danger" *ngIf="reservationForm.get('car')?.invalid && reservationForm.get('car')?.touched">
+                Mező kitöltése kötelező.
+            </small>
+        </div>
+    </div>
+    <button class="d-block mx-auto btn btn-primary" type="submit" [disabled]="reservationForm.invalid">Foglalás</button>
+</form>
